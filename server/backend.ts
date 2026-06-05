@@ -24,7 +24,28 @@ app.get("/exchange", async (req, res)=> {
                 }
             }
         );
-        res.json(tokenResponse.data); // send token back to frontend
+        const accessToken = tokenResponse.data.access_token;
+
+        // use access token to get user information
+        const userInfoResponse = await axios.get(
+            "http://localhost:8080/userinfo",
+            {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`
+                }
+            }
+        );
+
+        // send token and user info back to frontend
+        res.json({
+            token: tokenResponse.data,
+            user: {
+                ...userInfoResponse.data, //userinfo endpoint will return id "johndoe" by default
+                name: "John Doe",
+                email: "john.doe@gmail.com",
+                role: "SELLER"
+            }
+        });
     } catch (error) {
         console.error("Error", error.message);
         res.status(500).json({

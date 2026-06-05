@@ -8,7 +8,7 @@ document
       response_type: "code",
       client_id: "my-client-id",
       redirect_uri: "http://localhost:3000/callback.html",
-      scope: "openid profile email",
+      scope: "openid profile email role",
       state: crypto.randomUUID() //random security value
     });
 

@@ -9,8 +9,8 @@
 
   <h1>OAuth Callback</h1>
 
-  <h3>Code</h3>
-  <pre id="codeBox"></pre>
+  <h3>Authorization Code</h3>
+  <pre id="authCodeBox"></pre>
 
   <h3>Token</h3>
   <pre id="tokenBox"></pre>
@@ -23,7 +23,7 @@
   const code = urlParams.get("code");
 
   // show auth code if we have it
-  document.getElementById("codeBox").textContent = code || "no code found";
+  document.getElementById("authCodeBox").textContent = code || "no code found";
 
   // only call backend if code exists
   if (code) {
