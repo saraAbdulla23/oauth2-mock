@@ -33,7 +33,7 @@ app.get("/exchange", async (req, res)=> {
     }
 });
 
-// Start server
+// start server
 app.listen(3000, () => {
     console.log("Frontend running on http://localhost:3000");
   });
